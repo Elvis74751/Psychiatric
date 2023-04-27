@@ -27,8 +27,25 @@ public class PsychiatricConnection {
         
     }
     
-    //Method that will take
-    public void InsertStatement(){
+    //Method that will take two Strings, one will be called table which holds
+    //what table will be inserted into, and a second string for newValue which contains
+    //the values that will be inserted
+    //Important fact: newValues can also contain multiple new values,
+    //for example, newValue = "\'John\',\'Smith\',\'103th ave\'"
+    public int InsertStatement(String table, String newValue){
+        
+        int rowsEffected = 0;
+        
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWD);
+            statement = connection.createStatement();
+            rowsEffected = statement.executeUpdate("INSERT INTO " + table + "VALUES (" + newValue + ")");
+            
+        } catch (SQLException ex) {
+            System.out.println("Error:" + ex);
+        }
+        
+        return rowsEffected;
         
     }
     
@@ -121,6 +138,12 @@ public class PsychiatricConnection {
         
         PsychiatricConnection connection1 = new PsychiatricConnection();
         
+        int rowsEffected = connection1.DeleteStatement("patient_report","report_id = \'PSY5630NO\'");
+            
+        System.out.print(rowsEffected);
+        
+        /**
+         * This is for if you want to do a select statement
         try {
             
             ResultSet resultSet1 = connection1.SelectStatement("*", "patient");
@@ -133,6 +156,7 @@ public class PsychiatricConnection {
         } catch (SQLException ex) {
             System.out.println("Error:" + ex);
     }
+    **/
     }
     
 }
