@@ -12,14 +12,14 @@ import java.sql.*;
  */
 public class PsychiatricConnection {
     
-    final String DB_URL = "jdbc:mysql://localhost:3306/Psychiatric";
-    final String DB_DRV = "com.mysql.jdbc.Driver";
-    final String DB_USER = "root";
-    final String DB_PASSWD = "";
+    private final String DB_URL = "jdbc:mysql://localhost:3306/Psychiatric";
+    private final String DB_DRV = "com.mysql.jdbc.Driver";
+    private final String DB_USER = "root";
+    private final String DB_PASSWD = "";
     
-    Connection connection = null;
-    Statement statement = null;
-    ResultSet resultSet = null;
+    private Connection connection = null;
+    private Statement statement = null;
+    private ResultSet resultSet = null;
     
     //Constructor that creates an instance of this class which represents
     //a session of accessing the database
@@ -134,7 +134,11 @@ public class PsychiatricConnection {
             }
     }
     
-    public static void main(String[] args){
+    /**
+     * public static void main(String[] args){
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
         
         PsychiatricConnection connection1 = new PsychiatricConnection();
         
@@ -142,13 +146,15 @@ public class PsychiatricConnection {
             
         System.out.print(rowsEffected);
         
+        **/
+        
         /**
-         * This is for if you want to do a select statement
+        //This is for if you want to do a select statement
         try {
             
             ResultSet resultSet1 = connection1.SelectStatement("*", "patient");
             while (resultSet1.next()) {
-                System.out.printf("%s\t%s\n\t%s\n\t\n",
+                System.out.printf("%s\t%s\n\t%s\n\n",
                         resultSet1.getString(1),
                         resultSet1.getString(2),
                         resultSet1.getString(4));
@@ -156,7 +162,7 @@ public class PsychiatricConnection {
         } catch (SQLException ex) {
             System.out.println("Error:" + ex);
     }
-    **/
-    }
+    
+    } **/
     
 }
