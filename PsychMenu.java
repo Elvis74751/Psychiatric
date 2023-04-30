@@ -329,6 +329,7 @@ public class PsychMenu extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void PatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientButtonActionPerformed
@@ -502,61 +503,28 @@ public class PsychMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DepartmentButton;
-    private javax.swing.JButton DepartmentButton1;
-    private javax.swing.JButton DepartmentButton2;
-    private javax.swing.JButton DepartmentButton3;
     private javax.swing.JButton DepartmentButtonHS;
     private javax.swing.JButton LabButton;
-    private javax.swing.JButton LabButton1;
-    private javax.swing.JButton LabButton2;
-    private javax.swing.JButton LabButton3;
     private javax.swing.JButton LabButtonHS;
     private javax.swing.JButton MedicationButton;
-    private javax.swing.JButton MedicationButton1;
-    private javax.swing.JButton MedicationButton2;
-    private javax.swing.JButton MedicationButton3;
     private javax.swing.JButton MedicationButtonHS;
     private javax.swing.JButton PatientButton;
-    private javax.swing.JButton PatientButton1;
-    private javax.swing.JButton PatientButton2;
-    private javax.swing.JButton PatientButton3;
     private javax.swing.JButton PatientButtonHS;
     private javax.swing.JButton PatientReportButton;
-    private javax.swing.JButton PatientReportButton1;
-    private javax.swing.JButton PatientReportButton2;
-    private javax.swing.JButton PatientReportButton3;
     private javax.swing.JButton PatientReportHS;
     private javax.swing.JButton PayrollButton;
-    private javax.swing.JButton PayrollButton1;
-    private javax.swing.JButton PayrollButton2;
-    private javax.swing.JButton PayrollButton3;
     private javax.swing.JButton PayrollButtonHS;
     private javax.swing.JButton PerscriptionButton;
-    private javax.swing.JButton PerscriptionButton1;
-    private javax.swing.JButton PerscriptionButton2;
-    private javax.swing.JButton PerscriptionButton3;
     private javax.swing.JButton PerscriptionButtonHS;
     private javax.swing.JButton Return;
     private javax.swing.JButton StaffButton;
-    private javax.swing.JButton StaffButton1;
-    private javax.swing.JButton StaffButton2;
-    private javax.swing.JButton StaffButton3;
     private javax.swing.JButton StaffButtonHS;
     private javax.swing.JButton StayButton;
-    private javax.swing.JButton StayButton1;
-    private javax.swing.JButton StayButton2;
-    private javax.swing.JButton StayButton3;
     private javax.swing.JButton StayButtonHS;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 }

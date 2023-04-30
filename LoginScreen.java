@@ -99,6 +99,7 @@ public class LoginScreen extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -189,8 +190,6 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField password;
-    private javax.swing.JPasswordField password1;
     private javax.swing.JTextField staffID;
     private javax.swing.JPasswordField staffPassword;
     // End of variables declaration//GEN-END:variables
