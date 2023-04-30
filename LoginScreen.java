@@ -18,6 +18,9 @@ public class LoginScreen extends javax.swing.JFrame {
      * Creates new form LoginScreen
      */
     
+    private String adminID = "Admin";
+    private String adminPassword = "abc123"; 
+    
     private String truePassword = "abc123"; 
     
     public LoginScreen() {

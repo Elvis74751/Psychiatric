@@ -137,14 +137,14 @@ public class StayFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Patient ID", "Room Number", "Date In", "Date Out"
+                "Patient ID", "Room Number", "Date In", "Date Out", "Room Type"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -162,6 +162,7 @@ public class StayFrame extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(1).setResizable(false);
             jTable1.getColumnModel().getColumn(2).setResizable(false);
             jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -539,11 +540,11 @@ public class StayFrame extends javax.swing.JFrame {
         
         PsychiatricConnection connection1 = new PsychiatricConnection();
         
-        ResultSet resultsetStay = connection1.SelectStatement("*", "stay");
+        ResultSet resultset = connection1.SelectStatement("*", "stay s, room r", "s.room_num = r.room_num");
         
         try {
             
-            ResultSetMetaData Rss = resultsetStay.getMetaData();
+            ResultSetMetaData Rss = resultset.getMetaData();
             
             c = Rss.getColumnCount();
             
@@ -551,15 +552,16 @@ public class StayFrame extends javax.swing.JFrame {
             
             Df.setRowCount(c);
             
-            while(resultsetStay.next()){
+            while(resultset.next()){
                 Vector v2 = new Vector();
                 
                 for(int a = 1; a <= c; a++){
                     
-                    v2.add(resultsetStay.getString("patient_id"));
-                    v2.add(resultsetStay.getString("room_num"));
-                    v2.add(resultsetStay.getString("date_in"));
-                    v2.add(resultsetStay.getString("date_out"));
+                    v2.add(resultset.getString("patient_id"));
+                    v2.add(resultset.getString("room_num"));
+                    v2.add(resultset.getString("date_in"));
+                    v2.add(resultset.getString("date_out"));
+                    v2.add(resultset.getString("room_type"));
                 }
                 
                 Df.addRow(v2);
