@@ -26,7 +26,7 @@ public class PerscriptionFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        Return = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -59,16 +59,16 @@ public class PerscriptionFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Return");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Return.setText("Return");
+        Return.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ReturnActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Hospital System");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel2.setText("Dashboard");
 
@@ -80,16 +80,46 @@ public class PerscriptionFrame extends javax.swing.JFrame {
         });
 
         PatientReportButtonPP.setText("Patient Report");
+        PatientReportButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PatientReportButtonPPActionPerformed(evt);
+            }
+        });
 
         StaffButtonPP.setText("Staff");
+        StaffButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StaffButtonPPActionPerformed(evt);
+            }
+        });
 
         LabButtonPP.setText("Lab");
+        LabButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LabButtonPPActionPerformed(evt);
+            }
+        });
 
         PerscriptionButtonPP.setText("Perscription");
+        PerscriptionButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PerscriptionButtonPPActionPerformed(evt);
+            }
+        });
 
         MedicationButtonPP.setText("Medication");
+        MedicationButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MedicationButtonPPActionPerformed(evt);
+            }
+        });
 
         StayButtonPP.setText("Stay");
+        StayButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StayButtonPPActionPerformed(evt);
+            }
+        });
 
         DepartmentButtonPP.setText("Department");
         DepartmentButtonPP.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +129,11 @@ public class PerscriptionFrame extends javax.swing.JFrame {
         });
 
         PayrollButtonPP.setText("Payroll");
+        PayrollButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PayrollButtonPPActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -142,9 +177,9 @@ public class PerscriptionFrame extends javax.swing.JFrame {
                 .addComponent(PerscriptionButtonPP, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LabButtonPP, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(StaffButtonPP, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(PayrollButtonPP)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(DepartmentButtonPP)
@@ -271,9 +306,11 @@ public class PerscriptionFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(Return)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -289,16 +326,15 @@ public class PerscriptionFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(155, 155, 155)
-                                .addComponent(DeleteRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(DeleteRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(0, 43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Return))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -320,16 +356,25 @@ public class PerscriptionFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void ReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnActionPerformed
+        this.setVisible(false);
+
+        PsychMenu pM = new PsychMenu();
+        pM.setVisible(true);
+    }//GEN-LAST:event_ReturnActionPerformed
 
     private void PatientButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientButtonPPActionPerformed
+        this.setVisible(false);
 
+        PatientFrame pF = new PatientFrame();
+        pF.setVisible(true);
     }//GEN-LAST:event_PatientButtonPPActionPerformed
 
     private void DepartmentButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentButtonPPActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+
+        StaffFrame sF = new StaffFrame();
+        sF.setVisible(true);
     }//GEN-LAST:event_DepartmentButtonPPActionPerformed
 
     private void DeleteRecordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteRecordButtonActionPerformed
@@ -343,6 +388,55 @@ public class PerscriptionFrame extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void PatientReportButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientReportButtonPPActionPerformed
+        this.setVisible(false);
+
+        PatientFrame pF = new PatientFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PatientReportButtonPPActionPerformed
+
+    private void StayButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StayButtonPPActionPerformed
+        this.setVisible(false);
+
+        StayFrame sF = new StayFrame();
+        sF.setVisible(true);
+    }//GEN-LAST:event_StayButtonPPActionPerformed
+
+    private void MedicationButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicationButtonPPActionPerformed
+        this.setVisible(false);
+
+        MedicationFrame mF = new MedicationFrame();
+        mF.setVisible(true);
+    }//GEN-LAST:event_MedicationButtonPPActionPerformed
+
+    private void PerscriptionButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerscriptionButtonPPActionPerformed
+        this.setVisible(false);
+
+        PerscriptionFrame pF = new PerscriptionFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PerscriptionButtonPPActionPerformed
+
+    private void LabButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabButtonPPActionPerformed
+        this.setVisible(false);
+
+        LabFrame lF = new LabFrame();
+        lF.setVisible(true);
+    }//GEN-LAST:event_LabButtonPPActionPerformed
+
+    private void StaffButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StaffButtonPPActionPerformed
+        this.setVisible(false);
+
+        StaffFrame sF = new StaffFrame();
+        sF.setVisible(true);
+    }//GEN-LAST:event_StaffButtonPPActionPerformed
+
+    private void PayrollButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayrollButtonPPActionPerformed
+        this.setVisible(false);
+
+        PayrollFrame pF = new PayrollFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PayrollButtonPPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -393,10 +487,10 @@ public class PerscriptionFrame extends javax.swing.JFrame {
     private javax.swing.JButton PayrollButtonPP;
     private javax.swing.JButton PerscriptionButtonPP;
     private javax.swing.JLabel RefillDateAddrecordPersLabel;
+    private javax.swing.JButton Return;
     private javax.swing.JButton StaffButtonPP;
     private javax.swing.JLabel StaffIdAddRecordPF;
     private javax.swing.JButton StayButtonPP;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

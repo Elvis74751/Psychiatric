@@ -28,7 +28,7 @@ public class MedicationFrame extends javax.swing.JFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        Return = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -59,16 +59,16 @@ public class MedicationFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Return");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Return.setText("Return");
+        Return.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ReturnActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Hospital System");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel2.setText("Dashboard");
 
@@ -80,16 +80,46 @@ public class MedicationFrame extends javax.swing.JFrame {
         });
 
         PatientReportButtonPP.setText("Patient Report");
+        PatientReportButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PatientReportButtonPPActionPerformed(evt);
+            }
+        });
 
         StaffButtonPP.setText("Staff");
+        StaffButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StaffButtonPPActionPerformed(evt);
+            }
+        });
 
         LabButtonPP.setText("Lab");
+        LabButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LabButtonPPActionPerformed(evt);
+            }
+        });
 
         PerscriptionButtonPP.setText("Perscription");
+        PerscriptionButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PerscriptionButtonPPActionPerformed(evt);
+            }
+        });
 
         MedicationButtonPP.setText("Medication");
+        MedicationButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MedicationButtonPPActionPerformed(evt);
+            }
+        });
 
         StayButtonPP.setText("Stay");
+        StayButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StayButtonPPActionPerformed(evt);
+            }
+        });
 
         DepartmentButtonPP.setText("Department");
         DepartmentButtonPP.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +129,11 @@ public class MedicationFrame extends javax.swing.JFrame {
         });
 
         PayrollButtonPP.setText("Payroll");
+        PayrollButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PayrollButtonPPActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -177,7 +212,7 @@ public class MedicationFrame extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(jButton1)
+                        .addComponent(Return)
                         .addGap(42, 42, 42)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(112, Short.MAX_VALUE))
@@ -187,7 +222,7 @@ public class MedicationFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(Return)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -203,17 +238,75 @@ public class MedicationFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void ReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnActionPerformed
+        this.setVisible(false);
+
+        PsychMenu pM = new PsychMenu();
+        pM.setVisible(true);
+    }//GEN-LAST:event_ReturnActionPerformed
 
     private void PatientButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientButtonPPActionPerformed
+        this.setVisible(false);
 
+        PatientFrame pF = new PatientFrame();
+        pF.setVisible(true);
     }//GEN-LAST:event_PatientButtonPPActionPerformed
 
     private void DepartmentButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentButtonPPActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+
+        StaffFrame sF = new StaffFrame();
+        sF.setVisible(true);
     }//GEN-LAST:event_DepartmentButtonPPActionPerformed
+
+    private void PatientReportButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientReportButtonPPActionPerformed
+        this.setVisible(false);
+
+        PatientFrame pF = new PatientFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PatientReportButtonPPActionPerformed
+
+    private void StayButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StayButtonPPActionPerformed
+        this.setVisible(false);
+
+        StayFrame sF = new StayFrame();
+        sF.setVisible(true);
+    }//GEN-LAST:event_StayButtonPPActionPerformed
+
+    private void MedicationButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicationButtonPPActionPerformed
+        this.setVisible(false);
+
+        MedicationFrame mF = new MedicationFrame();
+        mF.setVisible(true);
+    }//GEN-LAST:event_MedicationButtonPPActionPerformed
+
+    private void PerscriptionButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerscriptionButtonPPActionPerformed
+        this.setVisible(false);
+
+        PerscriptionFrame pF = new PerscriptionFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PerscriptionButtonPPActionPerformed
+
+    private void LabButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabButtonPPActionPerformed
+        this.setVisible(false);
+
+        LabFrame lF = new LabFrame();
+        lF.setVisible(true);
+    }//GEN-LAST:event_LabButtonPPActionPerformed
+
+    private void StaffButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StaffButtonPPActionPerformed
+        this.setVisible(false);
+
+        StaffFrame sF = new StaffFrame();
+        sF.setVisible(true);
+    }//GEN-LAST:event_StaffButtonPPActionPerformed
+
+    private void PayrollButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayrollButtonPPActionPerformed
+        this.setVisible(false);
+
+        PayrollFrame pF = new PayrollFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PayrollButtonPPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,9 +351,9 @@ public class MedicationFrame extends javax.swing.JFrame {
     private javax.swing.JButton PatientReportButtonPP;
     private javax.swing.JButton PayrollButtonPP;
     private javax.swing.JButton PerscriptionButtonPP;
+    private javax.swing.JButton Return;
     private javax.swing.JButton StaffButtonPP;
     private javax.swing.JButton StayButtonPP;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;

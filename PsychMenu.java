@@ -31,7 +31,6 @@ public class PsychMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollBar1 = new javax.swing.JScrollBar();
         PatientButton = new javax.swing.JButton();
         PatientReportButton = new javax.swing.JButton();
         StaffButton = new javax.swing.JButton();
@@ -41,7 +40,7 @@ public class PsychMenu extends javax.swing.JFrame {
         StayButton = new javax.swing.JButton();
         DepartmentButton = new javax.swing.JButton();
         PayrollButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        Return = new javax.swing.JButton();
         PayrollButtonHS = new javax.swing.JButton();
         StaffButtonHS = new javax.swing.JButton();
         DepartmentButtonHS = new javax.swing.JButton();
@@ -65,6 +64,7 @@ public class PsychMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel1.setText("Hospital System ");
 
         jLabel2.setText("Dashboard");
@@ -77,16 +77,46 @@ public class PsychMenu extends javax.swing.JFrame {
         });
 
         PatientReportButton.setText("Patient Report");
+        PatientReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PatientReportButtonActionPerformed(evt);
+            }
+        });
 
         StaffButton.setText("Staff");
+        StaffButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StaffButtonActionPerformed(evt);
+            }
+        });
 
         LabButton.setText("Lab");
+        LabButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LabButtonActionPerformed(evt);
+            }
+        });
 
         PerscriptionButton.setText("Perscription");
+        PerscriptionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PerscriptionButtonActionPerformed(evt);
+            }
+        });
 
         MedicationButton.setText("Medication");
+        MedicationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MedicationButtonActionPerformed(evt);
+            }
+        });
 
         StayButton.setText("Stay");
+        StayButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StayButtonActionPerformed(evt);
+            }
+        });
 
         DepartmentButton.setText("Department");
         DepartmentButton.addActionListener(new java.awt.event.ActionListener() {
@@ -96,6 +126,11 @@ public class PsychMenu extends javax.swing.JFrame {
         });
 
         PayrollButton.setText("Payroll");
+        PayrollButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PayrollButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -104,32 +139,25 @@ public class PsychMenu extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(PerscriptionButton)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(LabButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(StaffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(DepartmentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(PayrollButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(DepartmentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(PayrollButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(PatientButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(PatientReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                                     .addComponent(StayButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(MedicationButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PerscriptionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(StaffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 21, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,22 +173,24 @@ public class PsychMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(MedicationButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(PerscriptionButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(LabButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addComponent(PerscriptionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(StaffButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PayrollButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DepartmentButton)
-                .addGap(35, 35, 35))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Return ");
+        Return.setText("Return ");
+        Return.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReturnActionPerformed(evt);
+            }
+        });
 
         PayrollButtonHS.setText("Payroll");
         PayrollButtonHS.addActionListener(new java.awt.event.ActionListener() {
@@ -231,22 +261,22 @@ public class PsychMenu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jButton1)
-                .addGap(13, 13, 13)
+                .addComponent(Return)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(15, 15, 15))
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(PayrollButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(DepartmentButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PatientReportHS, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 316, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(PatientButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,104 +284,186 @@ public class PsychMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(StayButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(MedicationButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(StaffButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(StaffButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(StayButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(MedicationButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(50, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addComponent(Return)
+                        .addGap(36, 36, 36))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(PatientButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(StayButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(MedicationButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PatientButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(StayButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MedicationButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PerscriptionButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LabButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(StaffButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PerscriptionButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(PayrollButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(DepartmentButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(27, 27, 27))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(PatientReportHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                            .addComponent(StaffButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PayrollButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DepartmentButtonHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PatientReportHS, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void PatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientButtonActionPerformed
-
+        this.setVisible(false);
+        
+        PatientFrame pF = new PatientFrame();
+        pF.setVisible(true);
     }//GEN-LAST:event_PatientButtonActionPerformed
 
     private void DepartmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentButtonActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        StaffFrame sF = new StaffFrame();
+        sF.setVisible(true);
     }//GEN-LAST:event_DepartmentButtonActionPerformed
 
     private void PayrollButtonHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayrollButtonHSActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        PayrollFrame pF = new PayrollFrame();
+        pF.setVisible(true);
     }//GEN-LAST:event_PayrollButtonHSActionPerformed
 
     private void StaffButtonHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StaffButtonHSActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        StaffFrame sF = new StaffFrame();
+        sF.setVisible(true);
     }//GEN-LAST:event_StaffButtonHSActionPerformed
 
     private void DepartmentButtonHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentButtonHSActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        StaffFrame sF = new StaffFrame();
+        sF.setVisible(true);
     }//GEN-LAST:event_DepartmentButtonHSActionPerformed
 
     private void MedicationButtonHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicationButtonHSActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        MedicationFrame mF = new MedicationFrame();
+        mF.setVisible(true);
     }//GEN-LAST:event_MedicationButtonHSActionPerformed
 
     private void StayButtonHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StayButtonHSActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        StayFrame sF = new StayFrame();
+        sF.setVisible(true);
     }//GEN-LAST:event_StayButtonHSActionPerformed
 
     private void LabButtonHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabButtonHSActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        LabFrame lF = new LabFrame();
+        lF.setVisible(true);
     }//GEN-LAST:event_LabButtonHSActionPerformed
 
     private void PatientButtonHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientButtonHSActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        PatientFrame pF = new PatientFrame();
+        pF.setVisible(true);
     }//GEN-LAST:event_PatientButtonHSActionPerformed
 
     private void PatientReportHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientReportHSActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        PatientFrame pF = new PatientFrame();
+        pF.setVisible(true);
     }//GEN-LAST:event_PatientReportHSActionPerformed
 
     private void PerscriptionButtonHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerscriptionButtonHSActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        PerscriptionFrame pF = new PerscriptionFrame();
+        pF.setVisible(true);
     }//GEN-LAST:event_PerscriptionButtonHSActionPerformed
+
+    private void ReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnActionPerformed
+        
+        this.setVisible(false);
+        
+        LoginScreen ls = new LoginScreen();
+        ls.setVisible(true);
+    }//GEN-LAST:event_ReturnActionPerformed
+
+    private void PatientReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientReportButtonActionPerformed
+        this.setVisible(false);
+        
+        PatientFrame pF = new PatientFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PatientReportButtonActionPerformed
+
+    private void StayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StayButtonActionPerformed
+        this.setVisible(false);
+        
+        StayFrame sF = new StayFrame();
+        sF.setVisible(true);
+    }//GEN-LAST:event_StayButtonActionPerformed
+
+    private void MedicationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicationButtonActionPerformed
+        this.setVisible(false);
+        
+        MedicationFrame mF = new MedicationFrame();
+        mF.setVisible(true);
+    }//GEN-LAST:event_MedicationButtonActionPerformed
+
+    private void PerscriptionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerscriptionButtonActionPerformed
+        this.setVisible(false);
+        
+        PerscriptionFrame pF = new PerscriptionFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PerscriptionButtonActionPerformed
+
+    private void LabButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabButtonActionPerformed
+        this.setVisible(false);
+        
+        LabFrame lF = new LabFrame();
+        lF.setVisible(true);
+    }//GEN-LAST:event_LabButtonActionPerformed
+
+    private void StaffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StaffButtonActionPerformed
+        this.setVisible(false);
+        
+        StaffFrame sF = new StaffFrame();
+        sF.setVisible(true);
+    }//GEN-LAST:event_StaffButtonActionPerformed
+
+    private void PayrollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayrollButtonActionPerformed
+        this.setVisible(false);
+        
+        PayrollFrame pF = new PayrollFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PayrollButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,29 +502,61 @@ public class PsychMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DepartmentButton;
+    private javax.swing.JButton DepartmentButton1;
+    private javax.swing.JButton DepartmentButton2;
+    private javax.swing.JButton DepartmentButton3;
     private javax.swing.JButton DepartmentButtonHS;
     private javax.swing.JButton LabButton;
+    private javax.swing.JButton LabButton1;
+    private javax.swing.JButton LabButton2;
+    private javax.swing.JButton LabButton3;
     private javax.swing.JButton LabButtonHS;
     private javax.swing.JButton MedicationButton;
+    private javax.swing.JButton MedicationButton1;
+    private javax.swing.JButton MedicationButton2;
+    private javax.swing.JButton MedicationButton3;
     private javax.swing.JButton MedicationButtonHS;
     private javax.swing.JButton PatientButton;
+    private javax.swing.JButton PatientButton1;
+    private javax.swing.JButton PatientButton2;
+    private javax.swing.JButton PatientButton3;
     private javax.swing.JButton PatientButtonHS;
     private javax.swing.JButton PatientReportButton;
+    private javax.swing.JButton PatientReportButton1;
+    private javax.swing.JButton PatientReportButton2;
+    private javax.swing.JButton PatientReportButton3;
     private javax.swing.JButton PatientReportHS;
     private javax.swing.JButton PayrollButton;
+    private javax.swing.JButton PayrollButton1;
+    private javax.swing.JButton PayrollButton2;
+    private javax.swing.JButton PayrollButton3;
     private javax.swing.JButton PayrollButtonHS;
     private javax.swing.JButton PerscriptionButton;
+    private javax.swing.JButton PerscriptionButton1;
+    private javax.swing.JButton PerscriptionButton2;
+    private javax.swing.JButton PerscriptionButton3;
     private javax.swing.JButton PerscriptionButtonHS;
+    private javax.swing.JButton Return;
     private javax.swing.JButton StaffButton;
+    private javax.swing.JButton StaffButton1;
+    private javax.swing.JButton StaffButton2;
+    private javax.swing.JButton StaffButton3;
     private javax.swing.JButton StaffButtonHS;
     private javax.swing.JButton StayButton;
+    private javax.swing.JButton StayButton1;
+    private javax.swing.JButton StayButton2;
+    private javax.swing.JButton StayButton3;
     private javax.swing.JButton StayButtonHS;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 }

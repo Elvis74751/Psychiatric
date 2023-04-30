@@ -28,8 +28,8 @@ public class LabFrame extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         PatientButtonPP = new javax.swing.JButton();
         PatientReportButtonPP = new javax.swing.JButton();
         StaffButtonPP = new javax.swing.JButton();
@@ -77,9 +77,9 @@ public class LabFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Hospital System");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel2.setText("Dashboard");
+        jLabel6.setText("Dashboard");
 
         PatientButtonPP.setText("Patient");
         PatientButtonPP.addActionListener(new java.awt.event.ActionListener() {
@@ -89,16 +89,46 @@ public class LabFrame extends javax.swing.JFrame {
         });
 
         PatientReportButtonPP.setText("Patient Report");
+        PatientReportButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PatientReportButtonPPActionPerformed(evt);
+            }
+        });
 
         StaffButtonPP.setText("Staff");
+        StaffButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StaffButtonPPActionPerformed(evt);
+            }
+        });
 
         LabButtonPP.setText("Lab");
+        LabButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LabButtonPPActionPerformed(evt);
+            }
+        });
 
         PerscriptionButtonPP.setText("Perscription");
+        PerscriptionButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PerscriptionButtonPPActionPerformed(evt);
+            }
+        });
 
         MedicationButtonPP.setText("Medication");
+        MedicationButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MedicationButtonPPActionPerformed(evt);
+            }
+        });
 
         StayButtonPP.setText("Stay");
+        StayButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StayButtonPPActionPerformed(evt);
+            }
+        });
 
         DepartmentButtonPP.setText("Department");
         DepartmentButtonPP.addActionListener(new java.awt.event.ActionListener() {
@@ -108,37 +138,42 @@ public class LabFrame extends javax.swing.JFrame {
         });
 
         PayrollButtonPP.setText("Payroll");
+        PayrollButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PayrollButtonPPActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(LabButtonPP, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(StaffButtonPP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(PerscriptionButtonPP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(DepartmentButtonPP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(PayrollButtonPP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(PatientButtonPP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(PatientReportButtonPP, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                                     .addComponent(StayButtonPP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(MedicationButtonPP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(26, Short.MAX_VALUE))))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PatientButtonPP)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -148,12 +183,12 @@ public class LabFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(MedicationButtonPP)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PerscriptionButtonPP, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PerscriptionButtonPP, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LabButtonPP, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(StaffButtonPP, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(StaffButtonPP)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PayrollButtonPP)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(DepartmentButtonPP)
@@ -173,7 +208,7 @@ public class LabFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         LabIDAddRecordLF.setText("Lab ID");
 
@@ -351,7 +386,7 @@ public class LabFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(179, 179, 179)
@@ -371,7 +406,7 @@ public class LabFrame extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addGap(42, 42, 42)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(541, Short.MAX_VALUE))
+                .addContainerGap(539, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,7 +419,7 @@ public class LabFrame extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -407,16 +442,11 @@ public class LabFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+
+        PsychMenu pM = new PsychMenu();
+        pM.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void PatientButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientButtonPPActionPerformed
-
-    }//GEN-LAST:event_PatientButtonPPActionPerformed
-
-    private void DepartmentButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentButtonPPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DepartmentButtonPPActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -433,6 +463,69 @@ public class LabFrame extends javax.swing.JFrame {
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void DepartmentButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentButtonPPActionPerformed
+        this.setVisible(false);
+
+        StaffFrame sF = new StaffFrame();
+        sF.setVisible(true);
+    }//GEN-LAST:event_DepartmentButtonPPActionPerformed
+
+    private void StaffButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StaffButtonPPActionPerformed
+        this.setVisible(false);
+
+        StaffFrame sF = new StaffFrame();
+        sF.setVisible(true);
+    }//GEN-LAST:event_StaffButtonPPActionPerformed
+
+    private void PatientReportButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientReportButtonPPActionPerformed
+        this.setVisible(false);
+
+        PatientFrame pF = new PatientFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PatientReportButtonPPActionPerformed
+
+    private void PatientButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientButtonPPActionPerformed
+        this.setVisible(false);
+
+        PatientFrame pF = new PatientFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PatientButtonPPActionPerformed
+
+    private void StayButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StayButtonPPActionPerformed
+        this.setVisible(false);
+
+        StayFrame sF = new StayFrame();
+        sF.setVisible(true);
+    }//GEN-LAST:event_StayButtonPPActionPerformed
+
+    private void MedicationButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicationButtonPPActionPerformed
+        this.setVisible(false);
+
+        MedicationFrame mF = new MedicationFrame();
+        mF.setVisible(true);
+    }//GEN-LAST:event_MedicationButtonPPActionPerformed
+
+    private void PerscriptionButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerscriptionButtonPPActionPerformed
+        this.setVisible(false);
+
+        PerscriptionFrame pF = new PerscriptionFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PerscriptionButtonPPActionPerformed
+
+    private void PayrollButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayrollButtonPPActionPerformed
+        this.setVisible(false);
+
+        PayrollFrame pF = new PayrollFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PayrollButtonPPActionPerformed
+
+    private void LabButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabButtonPPActionPerformed
+        this.setVisible(false);
+
+        LabFrame lF = new LabFrame();
+        lF.setVisible(true);
+    }//GEN-LAST:event_LabButtonPPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -473,30 +566,58 @@ public class LabFrame extends javax.swing.JFrame {
     private javax.swing.JLabel BloodPressureAddRecordLF;
     private javax.swing.JLabel ConclusionAddRecordLF;
     private javax.swing.JButton DeleteRecordButton;
+    private javax.swing.JButton DepartmentButton;
+    private javax.swing.JButton DepartmentButton1;
     private javax.swing.JButton DepartmentButtonPP;
+    private javax.swing.JButton LabButton;
+    private javax.swing.JButton LabButton1;
     private javax.swing.JButton LabButtonPP;
     private javax.swing.JLabel LabDateAddRecordLF;
     private javax.swing.JLabel LabIDAddRecordLF;
     private javax.swing.JLabel LabIDDeleteLabelLF;
+    private javax.swing.JButton MedicationButton;
+    private javax.swing.JButton MedicationButton1;
     private javax.swing.JButton MedicationButtonPP;
+    private javax.swing.JButton PatientButton;
+    private javax.swing.JButton PatientButton1;
+    private javax.swing.JButton PatientButton2;
+    private javax.swing.JButton PatientButton3;
     private javax.swing.JButton PatientButtonPP;
     private javax.swing.JLabel PatientHeightAddRecordLF;
     private javax.swing.JLabel PatientIdAddRecordLF;
+    private javax.swing.JButton PatientReportButton;
+    private javax.swing.JButton PatientReportButton1;
     private javax.swing.JButton PatientReportButtonPP;
     private javax.swing.JLabel PatientWeightAddRecordLF;
+    private javax.swing.JButton PayrollButton;
+    private javax.swing.JButton PayrollButton1;
     private javax.swing.JButton PayrollButtonPP;
+    private javax.swing.JButton PerscriptionButton;
+    private javax.swing.JButton PerscriptionButton1;
     private javax.swing.JButton PerscriptionButtonPP;
+    private javax.swing.JButton StaffButton;
+    private javax.swing.JButton StaffButton1;
     private javax.swing.JButton StaffButtonPP;
     private javax.swing.JLabel StaffIdAddRecordLF;
+    private javax.swing.JButton StayButton;
+    private javax.swing.JButton StayButton1;
     private javax.swing.JButton StayButtonPP;
     private javax.swing.JLabel TestTypeAddRecordLF;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;

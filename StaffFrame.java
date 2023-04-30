@@ -51,7 +51,7 @@ public class StaffFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Hospital System");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel2.setText("Dashboard");
 
@@ -63,16 +63,46 @@ public class StaffFrame extends javax.swing.JFrame {
         });
 
         PatientReportButtonPP.setText("Patient Report");
+        PatientReportButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PatientReportButtonPPActionPerformed(evt);
+            }
+        });
 
         StaffButtonPP.setText("Staff");
+        StaffButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StaffButtonPPActionPerformed(evt);
+            }
+        });
 
         LabButtonPP.setText("Lab");
+        LabButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LabButtonPPActionPerformed(evt);
+            }
+        });
 
         PerscriptionButtonPP.setText("Perscription");
+        PerscriptionButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PerscriptionButtonPPActionPerformed(evt);
+            }
+        });
 
         MedicationButtonPP.setText("Medication");
+        MedicationButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MedicationButtonPPActionPerformed(evt);
+            }
+        });
 
         StayButtonPP.setText("Stay");
+        StayButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StayButtonPPActionPerformed(evt);
+            }
+        });
 
         DepartmentButtonPP.setText("Department");
         DepartmentButtonPP.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +112,11 @@ public class StaffFrame extends javax.swing.JFrame {
         });
 
         PayrollButtonPP.setText("Payroll");
+        PayrollButtonPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PayrollButtonPPActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -92,7 +127,7 @@ public class StaffFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(LabButtonPP, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 6, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(StaffButtonPP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -167,16 +202,74 @@ public class StaffFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+
+        PsychMenu pM = new PsychMenu();
+        pM.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void PatientButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientButtonPPActionPerformed
+        this.setVisible(false);
 
+        PatientFrame pF = new PatientFrame();
+        pF.setVisible(true);
     }//GEN-LAST:event_PatientButtonPPActionPerformed
 
     private void DepartmentButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentButtonPPActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+
+        StaffFrame sF = new StaffFrame();
+        sF.setVisible(true);
     }//GEN-LAST:event_DepartmentButtonPPActionPerformed
+
+    private void PatientReportButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientReportButtonPPActionPerformed
+        this.setVisible(false);
+
+        PatientFrame pF = new PatientFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PatientReportButtonPPActionPerformed
+
+    private void StayButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StayButtonPPActionPerformed
+        this.setVisible(false);
+
+        StayFrame sF = new StayFrame();
+        sF.setVisible(true);
+    }//GEN-LAST:event_StayButtonPPActionPerformed
+
+    private void MedicationButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicationButtonPPActionPerformed
+        this.setVisible(false);
+
+        MedicationFrame mF = new MedicationFrame();
+        mF.setVisible(true);
+    }//GEN-LAST:event_MedicationButtonPPActionPerformed
+
+    private void PerscriptionButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerscriptionButtonPPActionPerformed
+        this.setVisible(false);
+
+        PerscriptionFrame pF = new PerscriptionFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PerscriptionButtonPPActionPerformed
+
+    private void LabButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LabButtonPPActionPerformed
+        this.setVisible(false);
+
+        LabFrame lF = new LabFrame();
+        lF.setVisible(true);
+    }//GEN-LAST:event_LabButtonPPActionPerformed
+
+    private void StaffButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StaffButtonPPActionPerformed
+        this.setVisible(false);
+
+        StaffFrame sF = new StaffFrame();
+        sF.setVisible(true);
+    }//GEN-LAST:event_StaffButtonPPActionPerformed
+
+    private void PayrollButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayrollButtonPPActionPerformed
+        this.setVisible(false);
+
+        PayrollFrame pF = new PayrollFrame();
+        pF.setVisible(true);
+    }//GEN-LAST:event_PayrollButtonPPActionPerformed
 
     /**
      * @param args the command line arguments

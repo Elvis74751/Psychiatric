@@ -87,7 +87,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="LabButtonPP" min="-2" pref="117" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -157,31 +157,49 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Patient Report"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PatientReportButtonPPActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="StaffButtonPP">
           <Properties>
             <Property name="text" type="java.lang.String" value="Staff"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StaffButtonPPActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="LabButtonPP">
           <Properties>
             <Property name="text" type="java.lang.String" value="Lab"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LabButtonPPActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="PerscriptionButtonPP">
           <Properties>
             <Property name="text" type="java.lang.String" value="Perscription"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PerscriptionButtonPPActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="MedicationButtonPP">
           <Properties>
             <Property name="text" type="java.lang.String" value="Medication"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MedicationButtonPPActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="StayButtonPP">
           <Properties>
             <Property name="text" type="java.lang.String" value="Stay"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StayButtonPPActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="DepartmentButtonPP">
           <Properties>
@@ -195,6 +213,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Payroll"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PayrollButtonPPActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
