@@ -4,6 +4,14 @@
  */
 package psychiatric;
 
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author alondrahernandez
@@ -43,6 +51,22 @@ public class MedicationFrame extends javax.swing.JFrame {
         PayrollButtonPP = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        TxtMedicationID = new javax.swing.JTextField();
+        TxtMedicationName = new javax.swing.JTextField();
+        TxtMedicationType = new javax.swing.JTextField();
+        TxtBrand = new javax.swing.JTextField();
+        TxtDescription = new javax.swing.JTextField();
+        AddMedication = new javax.swing.JButton();
+        UpdateMedication = new javax.swing.JButton();
+        DeleteMedication = new javax.swing.JButton();
+        RefreshTable = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        TxtMedicationPrice = new javax.swing.JTextField();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -184,7 +208,7 @@ public class MedicationFrame extends javax.swing.JFrame {
                 .addComponent(PayrollButtonPP)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(DepartmentButtonPP)
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -200,6 +224,58 @@ public class MedicationFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel3.setText("Medication ID");
+
+        jLabel4.setText("Medication Name");
+
+        jLabel5.setText("Medication Type");
+
+        jLabel6.setText("Brand");
+
+        jLabel7.setText("Description");
+
+        TxtMedicationID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtMedicationIDActionPerformed(evt);
+            }
+        });
+
+        TxtMedicationName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtMedicationNameActionPerformed(evt);
+            }
+        });
+
+        AddMedication.setText("Add Medication");
+        AddMedication.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddMedicationActionPerformed(evt);
+            }
+        });
+
+        UpdateMedication.setText("Update Medication");
+        UpdateMedication.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateMedicationActionPerformed(evt);
+            }
+        });
+
+        DeleteMedication.setText("Delete Medication");
+        DeleteMedication.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteMedicationActionPerformed(evt);
+            }
+        });
+
+        RefreshTable.setText("Refresh Table");
+        RefreshTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RefreshTableActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Med Price");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -212,10 +288,37 @@ public class MedicationFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(Return)))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(AddMedication)
+                                .addGap(37, 37, 37)
+                                .addComponent(UpdateMedication))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TxtMedicationID)
+                                    .addComponent(TxtMedicationName)
+                                    .addComponent(TxtMedicationType)
+                                    .addComponent(TxtBrand)
+                                    .addComponent(TxtDescription)
+                                    .addComponent(TxtMedicationPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                                .addGap(303, 303, 303)
+                                .addComponent(RefreshTable))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(DeleteMedication)))
                 .addContainerGap(112, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -226,13 +329,44 @@ public class MedicationFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Return)
                         .addGap(23, 23, 23)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(TxtMedicationID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RefreshTable))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(TxtMedicationName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(TxtMedicationType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(TxtBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(TxtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(TxtMedicationPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(UpdateMedication)
+                            .addComponent(AddMedication))
+                        .addGap(18, 18, 18)
+                        .addComponent(DeleteMedication)
+                        .addGap(20, 20, 20))))
         );
 
         pack();
@@ -309,6 +443,150 @@ public class MedicationFrame extends javax.swing.JFrame {
         pF.setVisible(true);
     }//GEN-LAST:event_PayrollButtonPPActionPerformed
 
+    private void RefreshTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshTableActionPerformed
+        int c = 0;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        ResultSet resultset = connection1.SelectStatement("*", "medication");
+        
+        try {
+            
+            ResultSetMetaData Rss = resultset.getMetaData();
+            
+            c = Rss.getColumnCount();
+            
+            DefaultTableModel Df = (DefaultTableModel)jTable1.getModel();
+            
+            Df.setRowCount(c);
+            
+            while(resultset.next()){
+                Vector v2 = new Vector();
+                
+                for(int a = 1; a <= c; a++){
+                    
+                    v2.add(resultset.getString("med_id"));
+                    v2.add(resultset.getString("med_name"));
+                    v2.add(resultset.getString("med_type"));
+                    v2.add(resultset.getString("med_brand"));
+                    v2.add(resultset.getString("med_decription"));
+                }
+                
+                Df.addRow(v2);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(StayFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        connection1.EndConnection();
+    }//GEN-LAST:event_RefreshTableActionPerformed
+
+    private void AddMedicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMedicationActionPerformed
+        //For Patient
+        String medicationId = TxtMedicationID.getText();
+        String medicationName = TxtMedicationName.getText();
+        String medicationType = TxtMedicationType.getText();
+        String medicationBrand = TxtBrand.getText();
+        String medicationDecription = TxtDescription.getText();
+        String medicationPrice = TxtMedicationPrice.getText(); //This is an int so don't put ' ' around it
+        
+        //putting the variables in the proper varchar sql format
+        medicationId = "'"+medicationId+"'";
+        medicationName = "'"+medicationName+"'";
+        medicationType = "'"+medicationType+"'";
+        medicationBrand = "'"+medicationBrand+"'";
+        medicationDecription = "'"+medicationDecription+"'";
+        
+        String values = medicationId+","+medicationName+","+medicationType+","+medicationPrice+","+medicationBrand+","+medicationDecription;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        //
+        connection1.InsertStatement("medication", values);
+        
+        RecordAddedFrame addFrame = new RecordAddedFrame();
+        
+        addFrame.setVisible(true);
+        
+        //setting all fields back to blank
+        TxtMedicationID.setText("");
+        TxtMedicationName.setText("");
+        TxtMedicationType.setText("");
+        TxtBrand.setText("");
+        TxtDescription.setText("");
+        TxtMedicationPrice.setText("");
+    }//GEN-LAST:event_AddMedicationActionPerformed
+
+    private void TxtMedicationIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtMedicationIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtMedicationIDActionPerformed
+
+    private void TxtMedicationNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtMedicationNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtMedicationNameActionPerformed
+
+    private void DeleteMedicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteMedicationActionPerformed
+        String medicationId = TxtMedicationID.getText();
+        
+        medicationId = "'"+medicationId+"'";
+        
+        String condition = "med_id LIKE "+medicationId;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        connection1.DeleteStatement("medication", condition);
+        
+        RecordDeleteFrame deleteFrame = new RecordDeleteFrame();
+        
+        deleteFrame.setVisible(true);
+        
+        TxtMedicationID.setText("");
+        TxtMedicationName.setText("");
+        TxtMedicationType.setText("");
+        TxtBrand.setText("");
+        TxtDescription.setText("");
+        TxtMedicationPrice.setText("");
+    }//GEN-LAST:event_DeleteMedicationActionPerformed
+
+    private void UpdateMedicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateMedicationActionPerformed
+        //For Lab
+        String medicationId = TxtMedicationID.getText();
+        String medicationName = TxtMedicationName.getText();
+        String medicationType = TxtMedicationType.getText();
+        String medicationBrand = TxtBrand.getText();
+        String medicationDecription = TxtDescription.getText();
+        String medicationPrice = TxtMedicationPrice.getText(); //This is an int so don't put ' ' around it
+        
+        //putting the variables in the proper varchar sql format
+        medicationId = "'"+medicationId+"'";
+        medicationName = "'"+medicationName+"'";
+        medicationType = "'"+medicationType+"'";
+        medicationBrand = "'"+medicationBrand+"'";
+        medicationDecription = "'"+medicationDecription+"'";
+        
+        //This string will hold the lines of SQl that go after "SET" in the Lab update statement
+        String Column_newValue = "med_id = "+medicationId+", med_name = "+medicationName+", med_type = "+medicationType+", med_price = "+medicationPrice+", med_brand = "+medicationBrand+", med_decription = "+medicationDecription;
+        
+        //This string will hold the condition where the update will take place
+        String condition = "med_id LIKE "+medicationId;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        connection1.UpdateStatement("medication", Column_newValue, condition);
+        
+        RecordUpdateFrame updateFrame = new RecordUpdateFrame();
+        
+        updateFrame.setVisible(true);
+        
+        //setting all fields back to blank
+        TxtMedicationID.setText("");
+        TxtMedicationName.setText("");
+        TxtMedicationType.setText("");
+        TxtBrand.setText("");
+        TxtDescription.setText("");
+        TxtMedicationPrice.setText("");
+    }//GEN-LAST:event_UpdateMedicationActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -345,6 +623,8 @@ public class MedicationFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddMedication;
+    private javax.swing.JButton DeleteMedication;
     private javax.swing.JButton DepartmentButtonPP;
     private javax.swing.JButton LabButtonPP;
     private javax.swing.JButton MedicationButtonPP;
@@ -352,11 +632,25 @@ public class MedicationFrame extends javax.swing.JFrame {
     private javax.swing.JButton PatientReportButtonPP;
     private javax.swing.JButton PayrollButtonPP;
     private javax.swing.JButton PerscriptionButtonPP;
+    private javax.swing.JButton RefreshTable;
     private javax.swing.JButton Return;
     private javax.swing.JButton StaffButtonPP;
     private javax.swing.JButton StayButtonPP;
+    private javax.swing.JTextField TxtBrand;
+    private javax.swing.JTextField TxtDescription;
+    private javax.swing.JTextField TxtMedicationID;
+    private javax.swing.JTextField TxtMedicationName;
+    private javax.swing.JTextField TxtMedicationPrice;
+    private javax.swing.JTextField TxtMedicationType;
+    private javax.swing.JButton UpdateMedication;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

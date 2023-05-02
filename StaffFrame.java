@@ -4,6 +4,14 @@
  */
 package psychiatric;
 
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author alondrahernandez
@@ -39,6 +47,30 @@ public class StaffFrame extends javax.swing.JFrame {
         StayButtonPP = new javax.swing.JButton();
         DepartmentButtonPP = new javax.swing.JButton();
         PayrollButtonPP = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtStaffId = new javax.swing.JTextField();
+        txtStaffDob = new javax.swing.JTextField();
+        txtStaffLastName = new javax.swing.JTextField();
+        txtStaffFirstName = new javax.swing.JTextField();
+        txtSSN = new javax.swing.JTextField();
+        txtStaffPhoneNumber = new javax.swing.JTextField();
+        txtStaffAddress = new javax.swing.JTextField();
+        txtStaffDegree = new javax.swing.JTextField();
+        AddRecord = new javax.swing.JButton();
+        UpdateRecord = new javax.swing.JButton();
+        DeleteRecord = new javax.swing.JButton();
+        RefreshTable = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        txtStaffPassword = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -167,8 +199,89 @@ public class StaffFrame extends javax.swing.JFrame {
                 .addComponent(PayrollButtonPP)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(DepartmentButtonPP)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Staff ID", "First Name", "Last Name", "Deparment", "Department Head"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        jLabel3.setText("Staff ID");
+
+        jLabel4.setText("DOB");
+
+        jLabel5.setText("Last Name");
+
+        jLabel6.setText("First Name");
+
+        jLabel7.setText("SSN");
+
+        jLabel8.setText("Phone Number");
+
+        jLabel9.setText("Address");
+
+        jLabel10.setText("Degree Number");
+
+        AddRecord.setText("Add Record");
+        AddRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddRecordActionPerformed(evt);
+            }
+        });
+
+        UpdateRecord.setText("Update Record");
+        UpdateRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateRecordActionPerformed(evt);
+            }
+        });
+
+        DeleteRecord.setText("Delete Record");
+        DeleteRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteRecordActionPerformed(evt);
+            }
+        });
+
+        RefreshTable.setText("Refresh Table");
+        RefreshTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RefreshTableActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Password");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,22 +294,105 @@ public class StaffFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(AddRecord)
+                                .addGap(39, 39, 39)
+                                .addComponent(UpdateRecord))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11))
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtStaffId)
+                                    .addComponent(txtStaffDob)
+                                    .addComponent(txtStaffLastName)
+                                    .addComponent(txtStaffFirstName)
+                                    .addComponent(txtSSN)
+                                    .addComponent(txtStaffPhoneNumber)
+                                    .addComponent(txtStaffAddress)
+                                    .addComponent(txtStaffDegree)
+                                    .addComponent(txtStaffPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
+                                .addGap(134, 134, 134)
+                                .addComponent(RefreshTable))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(DeleteRecord)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
-                .addGap(23, 23, 23)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 21, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtStaffId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RefreshTable))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtStaffDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtStaffLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtStaffFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtStaffPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(txtStaffAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(txtStaffDegree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(txtStaffPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(AddRecord)
+                            .addComponent(UpdateRecord))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DeleteRecord))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(23, 23, 23)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(507, 507, 507))
         );
 
         pack();
@@ -273,6 +469,158 @@ public class StaffFrame extends javax.swing.JFrame {
         pF.setVisible(true);
     }//GEN-LAST:event_PayrollButtonPPActionPerformed
 
+    private void RefreshTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshTableActionPerformed
+        int c = 0;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        ResultSet resultset = connection1.SelectStatement("s.staff_id, s.staff_first, s.staff_last, d.department_name, d.department_head", "Staff s, Department d, Payroll p","s.staff_id = p.staff_id AND p.department_id = d.department_id");
+        
+        try {
+            
+            ResultSetMetaData Rss = resultset.getMetaData();
+            
+            c = Rss.getColumnCount();
+            
+            DefaultTableModel Df = (DefaultTableModel)jTable1.getModel();
+            
+            Df.setRowCount(c);
+            
+            while(resultset.next()){
+                Vector v2 = new Vector();
+                
+                for(int a = 1; a <= c; a++){
+                    
+                    v2.add(resultset.getString("staff_id"));
+                    v2.add(resultset.getString("staff_first"));
+                    v2.add(resultset.getString("staff_last"));
+                    v2.add(resultset.getString("department_name"));
+                    v2.add(resultset.getString("department_head"));
+                }
+                
+                Df.addRow(v2);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PayrollFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        connection1.EndConnection();
+    }//GEN-LAST:event_RefreshTableActionPerformed
+
+    private void AddRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRecordActionPerformed
+        //For Staff
+        String staffId = txtStaffId.getText();
+        String staffDOB = txtStaffDob.getText(); //do not format with ' ' 
+        String staffLastName = txtStaffLastName.getText();
+        String staffFirstName = txtStaffFirstName.getText();
+        String staffSSN = txtSSN.getText(); //do not format with ' '
+        String staffPhoneNumber = txtStaffPhoneNumber.getText(); //do not format with ' ' 
+        String staffAddress = txtStaffAddress.getText();
+        String staffDegreeNumber = txtStaffDegree.getText(); //do not format with ' '
+        String staffPassword = txtStaffPassword.getText();
+        
+        //putting the variables in the proper varchar sql format
+        staffId = "'"+staffId+"'";
+        staffLastName = "'"+staffLastName+"'";
+        staffFirstName = "'"+staffFirstName+"'";
+        staffAddress = "'"+staffAddress+"'";
+        staffPassword = "'"+staffPassword+"'";
+        
+        String values = staffId+","+staffDOB+","+staffLastName+","+staffFirstName+","+staffSSN+","+staffPhoneNumber+","+staffAddress+","+staffDegreeNumber+","+staffPassword;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        //
+        connection1.InsertStatement("Staff", values);
+        
+        RecordAddedFrame addFrame = new RecordAddedFrame();
+        
+        addFrame.setVisible(true);
+        
+        //setting all fields back to blank
+        txtStaffId.setText("");
+        txtStaffDob.setText("");
+        txtStaffLastName.setText("");
+        txtStaffFirstName.setText("");
+        txtSSN.setText("");
+        txtStaffPhoneNumber.setText("");
+        txtStaffAddress.setText("");
+        txtStaffDegree.setText("");
+        txtStaffPassword.setText("");
+    }//GEN-LAST:event_AddRecordActionPerformed
+
+    private void UpdateRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateRecordActionPerformed
+        //For Staff
+        String staffId = txtStaffId.getText();
+        String staffDOB = txtStaffDob.getText(); //do not format with ' ' 
+        String staffLastName = txtStaffLastName.getText();
+        String staffFirstName = txtStaffFirstName.getText();
+        String staffSSN = txtSSN.getText(); //do not format with ' '
+        String staffPhoneNumber = txtStaffPhoneNumber.getText(); //do not format with ' ' 
+        String staffAddress = txtStaffAddress.getText();
+        String staffDegreeNumber = txtStaffDegree.getText(); //do not format with ' '
+        String staffPassword = txtStaffPassword.getText();
+        
+        //putting the variables in the proper varchar sql format
+        staffId = "'"+staffId+"'";
+        staffLastName = "'"+staffLastName+"'";
+        staffFirstName = "'"+staffFirstName+"'";
+        staffAddress = "'"+staffAddress+"'";
+        staffPassword = "'"+staffPassword+"'";
+        
+        //This string will hold the lines of SQl that go after "SET" in the Lab update statement
+        String Column_newValue = "staff_id = "+staffId+", staff_dob = "+staffDOB+", staff_last = "+staffLastName+", staff_first = "+staffFirstName+", staff_ssn = "+staffSSN+", staff_phone = "+staffPhoneNumber+", staff_address = "+staffAddress+", degree_number = "+staffDegreeNumber+", staff_password = "+staffPassword;
+        
+        //This string will hold the condition where the update will take place
+        String condition = "staff_id LIKE "+staffId;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        connection1.UpdateStatement("Staff", Column_newValue, condition);
+        
+        RecordUpdateFrame updateFrame = new RecordUpdateFrame();
+        
+        updateFrame.setVisible(true);
+        
+        //setting all fields back to blank
+        txtStaffId.setText("");
+        txtStaffDob.setText("");
+        txtStaffLastName.setText("");
+        txtStaffFirstName.setText("");
+        txtSSN.setText("");
+        txtStaffPhoneNumber.setText("");
+        txtStaffAddress.setText("");
+        txtStaffDegree.setText("");
+        txtStaffPassword.setText("");
+    }//GEN-LAST:event_UpdateRecordActionPerformed
+
+    private void DeleteRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteRecordActionPerformed
+        String staffId = txtStaffId.getText();
+        
+        staffId = "'"+staffId+"'";
+        
+        String condition = "staff_id LIKE "+staffId;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        connection1.DeleteStatement("staff", condition);
+        
+        RecordDeleteFrame deleteFrame = new RecordDeleteFrame();
+        
+        deleteFrame.setVisible(true);
+        
+        //setting all fields back to blank
+        txtStaffId.setText("");
+        txtStaffDob.setText("");
+        txtStaffLastName.setText("");
+        txtStaffFirstName.setText("");
+        txtSSN.setText("");
+        txtStaffPhoneNumber.setText("");
+        txtStaffAddress.setText("");
+        txtStaffDegree.setText("");
+        txtStaffPassword.setText("");
+    }//GEN-LAST:event_DeleteRecordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -309,6 +657,8 @@ public class StaffFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddRecord;
+    private javax.swing.JButton DeleteRecord;
     private javax.swing.JButton DepartmentButtonPP;
     private javax.swing.JButton LabButtonPP;
     private javax.swing.JButton MedicationButtonPP;
@@ -316,11 +666,33 @@ public class StaffFrame extends javax.swing.JFrame {
     private javax.swing.JButton PatientReportButtonPP;
     private javax.swing.JButton PayrollButtonPP;
     private javax.swing.JButton PerscriptionButtonPP;
+    private javax.swing.JButton RefreshTable;
     private javax.swing.JButton StaffButtonPP;
     private javax.swing.JButton StayButtonPP;
+    private javax.swing.JButton UpdateRecord;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtSSN;
+    private javax.swing.JTextField txtStaffAddress;
+    private javax.swing.JTextField txtStaffDegree;
+    private javax.swing.JTextField txtStaffDob;
+    private javax.swing.JTextField txtStaffFirstName;
+    private javax.swing.JTextField txtStaffId;
+    private javax.swing.JTextField txtStaffLastName;
+    private javax.swing.JTextField txtStaffPassword;
+    private javax.swing.JTextField txtStaffPhoneNumber;
     // End of variables declaration//GEN-END:variables
 }

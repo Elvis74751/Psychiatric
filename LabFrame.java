@@ -280,6 +280,11 @@ public class LabFrame extends javax.swing.JFrame {
         });
 
         UpdateRecord.setText("Update Record");
+        UpdateRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateRecordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -413,7 +418,7 @@ public class LabFrame extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(62, 62, 62)
                         .addComponent(RefreshTable))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1410, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1226, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -437,7 +442,7 @@ public class LabFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(RefreshTable)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -474,7 +479,7 @@ public class LabFrame extends javax.swing.JFrame {
         bloodPressure = "'"+bloodPressure+"'";
         Conclusion = "'"+Conclusion+"'";
         
-        String values = labId+","+patientId+","+staffId+","+testType+","+patientWeight+","+patientHeight+","+bloodPressure+","+Conclusion;
+        String values = labId+","+patientId+","+staffId+","+labDate+","+testType+","+patientWeight+","+patientHeight+","+bloodPressure+","+Conclusion;
         
         PsychiatricConnection connection1 = new PsychiatricConnection();
         
@@ -597,7 +602,7 @@ public class LabFrame extends javax.swing.JFrame {
         
         PsychiatricConnection connection1 = new PsychiatricConnection();
         
-        ResultSet resultset = connection1.SelectStatement("*", "lab");
+        ResultSet resultset = connection1.SelectStatement("*", "Lab");
         
         try {
             
@@ -633,6 +638,54 @@ public class LabFrame extends javax.swing.JFrame {
         }
         connection1.EndConnection();
     }//GEN-LAST:event_RefreshTableActionPerformed
+
+    private void UpdateRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateRecordActionPerformed
+        //For Lab
+        String labId = txtLabid.getText();
+        String patientId = txtPatientId.getText();
+        String staffId = txtStaffid.getText();
+        String labDate = txtLabDate.getText(); //leave this without a ' ' cause it is an int
+        String testType = txtTestType.getText();
+        String patientWeight = txtPatientWeight.getText();
+        String patientHeight = txtPatientHeight.getText();
+        String bloodPressure = txtBloodPressure.getText();
+        String Conclusion = txtConclusion.getText();
+        
+        //putting the variables in the proper varchar sql format
+        labId = "'"+labId+"'";
+        patientId = "'"+patientId+"'";
+        staffId = "'"+staffId+"'";
+        testType = "'"+testType+"'";
+        patientWeight = "'"+patientWeight+"'";
+        patientHeight = "'"+patientHeight+"'";
+        bloodPressure = "'"+bloodPressure+"'";
+        Conclusion = "'"+Conclusion+"'";
+        
+        //This string will hold the lines of SQl that go after "SET" in the Lab update statement
+        String Column_newValue = "lab_id = "+labId+", patient_id = "+patientId+", staff_id = "+staffId+", lab_date = "+labDate+", test_type = "+testType+", patient_weight = "+patientWeight+", patient_height = "+patientHeight+", patient_blood_pressure = "+bloodPressure+", conclusion = "+Conclusion;
+        
+        //This string will hold the condition where the update will take place
+        String condition = "lab_ID LIKE "+labId;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        connection1.UpdateStatement("lab", Column_newValue, condition);
+        
+        RecordUpdateFrame updateFrame = new RecordUpdateFrame();
+        
+        updateFrame.setVisible(true);
+        
+        //setting all fields back to blank
+        txtLabid.setText("");
+        txtPatientId.setText("");
+        txtStaffid.setText("");
+        txtLabDate.setText("");
+        txtTestType.setText("");
+        txtPatientWeight.setText("");
+        txtPatientHeight.setText("");
+        txtBloodPressure.setText("");
+        txtConclusion.setText("");
+    }//GEN-LAST:event_UpdateRecordActionPerformed
 
     /**
      * @param args the command line arguments

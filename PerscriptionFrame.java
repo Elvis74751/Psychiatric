@@ -4,6 +4,14 @@
  */
 package psychiatric;
 
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author alondrahernandez
@@ -41,21 +49,23 @@ public class PerscriptionFrame extends javax.swing.JFrame {
         PayrollButtonPP = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-        DeleteRecordButton = new javax.swing.JButton();
+        DeleteRecord = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         MedicationIdAddrecordPersLabel = new javax.swing.JLabel();
         PatientIDAddrecordPersLabel = new javax.swing.JLabel();
         DosageAddrecordPersLabel = new javax.swing.JLabel();
         DatePerscribedAddrecordPersLabel = new javax.swing.JLabel();
         StaffIdAddRecordPF = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        TxtStaffId = new javax.swing.JTextField();
+        TxtRefillDate = new javax.swing.JTextField();
+        TxtDatePerscribed = new javax.swing.JTextField();
+        TxtMedicationId = new javax.swing.JTextField();
+        TxtPatientId = new javax.swing.JTextField();
         RefillDateAddrecordPersLabel = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        TxtDosage = new javax.swing.JTextField();
+        AddRecord = new javax.swing.JButton();
+        UpdateRecord = new javax.swing.JButton();
+        RefreshTable = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -200,10 +210,10 @@ public class PerscriptionFrame extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
-        DeleteRecordButton.setText("Delete Record");
-        DeleteRecordButton.addActionListener(new java.awt.event.ActionListener() {
+        DeleteRecord.setText("Delete Record");
+        DeleteRecord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteRecordButtonActionPerformed(evt);
+                DeleteRecordActionPerformed(evt);
             }
         });
 
@@ -219,13 +229,33 @@ public class PerscriptionFrame extends javax.swing.JFrame {
 
         StaffIdAddRecordPF.setText("Staff Id");
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        TxtDatePerscribed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                TxtDatePerscribedActionPerformed(evt);
+            }
+        });
+
+        TxtMedicationId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtMedicationIdActionPerformed(evt);
             }
         });
 
         RefillDateAddrecordPersLabel.setText("Refill Date");
+
+        AddRecord.setText("Add Record ");
+        AddRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddRecordActionPerformed(evt);
+            }
+        });
+
+        UpdateRecord.setText("Update Record");
+        UpdateRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateRecordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -245,60 +275,70 @@ public class PerscriptionFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(DosageAddrecordPersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TxtDosage, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(MedicationIdAddrecordPersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TxtMedicationId, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(RefillDateAddrecordPersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TxtRefillDate, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TxtStaffId, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(PatientIDAddrecordPersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(57, 57, 57)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(TxtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TxtDatePerscribed, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(64, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(AddRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(UpdateRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MedicationIdAddrecordPersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8))
+                    .addComponent(TxtMedicationId))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(PatientIDAddrecordPersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TxtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(StaffIdAddRecordPF, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(TxtStaffId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DatePerscribedAddrecordPersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6))
+                    .addComponent(TxtDatePerscribed))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DosageAddrecordPersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtDosage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(RefillDateAddrecordPersLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(111, 111, 111))
+                    .addComponent(TxtRefillDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AddRecord)
+                    .addComponent(UpdateRecord))
+                .addGap(76, 76, 76))
         );
 
-        jButton3.setText("Add Record ");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        RefreshTable.setText("Refresh Table");
+        RefreshTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                RefreshTableActionPerformed(evt);
             }
         });
 
@@ -312,23 +352,22 @@ public class PerscriptionFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(Return)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(109, 109, 109)
+                        .addComponent(RefreshTable)
+                        .addGap(0, 128, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(DeleteRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1002, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(204, 204, 204)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(155, 155, 155)
-                                .addComponent(DeleteRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 43, Short.MAX_VALUE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 892, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,13 +385,11 @@ public class PerscriptionFrame extends javax.swing.JFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(261, 261, 261)
-                                .addComponent(DeleteRecordButton))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
-                        .addGap(28, 28, 28))))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RefreshTable))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DeleteRecord)
+                        .addGap(35, 35, 35))))
         );
 
         pack();
@@ -380,17 +417,70 @@ public class PerscriptionFrame extends javax.swing.JFrame {
         sF.setVisible(true);
     }//GEN-LAST:event_DepartmentButtonPPActionPerformed
 
-    private void DeleteRecordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteRecordButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DeleteRecordButtonActionPerformed
+    private void DeleteRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteRecordActionPerformed
+        String medicationId = TxtMedicationId.getText();
+        String patientId = TxtPatientId.getText();
+        String staffId = TxtStaffId.getText();
+        
+        medicationId = "'"+medicationId+"'";
+        patientId = "'"+patientId+"'";
+        staffId = "'"+staffId+"'";
+        
+        String condition = "med_ID LIKE "+medicationId+" AND Patient_id LIKE "+patientId+" AND Staff_id LIKE "+staffId;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        connection1.DeleteStatement("prescription", condition);
+        
+        RecordDeleteFrame deleteFrame = new RecordDeleteFrame();
+        
+        deleteFrame.setVisible(true);
+        
+        TxtMedicationId.setText("");
+        TxtPatientId.setText("");
+        TxtStaffId.setText("");
+        TxtDatePerscribed.setText("");
+        TxtDosage.setText("");
+        TxtRefillDate.setText("");
+    }//GEN-LAST:event_DeleteRecordActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void TxtMedicationIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtMedicationIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_TxtMedicationIdActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void AddRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRecordActionPerformed
+        //For Patient
+        String medicationId = TxtMedicationId.getText();
+        String patientId = TxtPatientId.getText();
+        String staffId = TxtStaffId.getText();
+        String datePrescribed = TxtDatePerscribed.getText(); //leave this without a ' ' cause it is an int
+        String dosage = TxtDosage.getText(); //leave this without a ' ' cause it is an int
+        String refillDate = TxtRefillDate.getText(); //leave this without a ' ' cause it is an int
+        
+        //putting the variables in the proper varchar sql format
+        medicationId = "'"+medicationId+"'";
+        patientId = "'"+patientId+"'";
+        staffId = "'"+staffId+"'";
+        
+        String values = medicationId+","+patientId+","+staffId+","+datePrescribed+","+dosage+","+refillDate;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        //
+        connection1.InsertStatement("Prescription", values);
+        
+        RecordAddedFrame addFrame = new RecordAddedFrame();
+        
+        addFrame.setVisible(true);
+        
+        //setting all fields back to blank
+        TxtMedicationId.setText("");
+        TxtPatientId.setText("");
+        TxtStaffId.setText("");
+        TxtDatePerscribed.setText("");
+        TxtDosage.setText("");
+        TxtRefillDate.setText("");
+    }//GEN-LAST:event_AddRecordActionPerformed
 
     private void PatientReportButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientReportButtonPPActionPerformed
         this.setVisible(false);
@@ -441,6 +531,86 @@ public class PerscriptionFrame extends javax.swing.JFrame {
         pF.setVisible(true);
     }//GEN-LAST:event_PayrollButtonPPActionPerformed
 
+    private void RefreshTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshTableActionPerformed
+        int c = 0;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        ResultSet resultset = connection1.SelectStatement("*", "prescription");
+        
+        try {
+            
+            ResultSetMetaData Rss = resultset.getMetaData();
+            
+            c = Rss.getColumnCount();
+            
+            DefaultTableModel Df = (DefaultTableModel)jTable3.getModel();
+            
+            Df.setRowCount(c);
+            
+            while(resultset.next()){
+                Vector v2 = new Vector();
+                
+                for(int a = 1; a <= c; a++){
+                    
+                    v2.add(resultset.getString("med_id"));
+                    v2.add(resultset.getString("patient_id"));
+                    v2.add(resultset.getString("staff_id"));
+                    v2.add(resultset.getString("Date_prescribed"));
+                    v2.add(resultset.getString("dosage"));
+                    v2.add(resultset.getString("refill_Date"));
+                }
+                
+                Df.addRow(v2);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PerscriptionFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        connection1.EndConnection();
+    }//GEN-LAST:event_RefreshTableActionPerformed
+
+    private void TxtDatePerscribedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtDatePerscribedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtDatePerscribedActionPerformed
+
+    private void UpdateRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateRecordActionPerformed
+        //For Patient
+        String medicationId = TxtMedicationId.getText();
+        String patientId = TxtPatientId.getText();
+        String staffId = TxtStaffId.getText();
+        String datePrescribed = TxtDatePerscribed.getText(); //leave this without a ' ' cause it is an int
+        String dosage = TxtDosage.getText(); //leave this without a ' ' cause it is an int
+        String refillDate = TxtRefillDate.getText(); //leave this without a ' ' cause it is an int
+        
+        //putting the variables in the proper varchar sql format
+        medicationId = "'"+medicationId+"'";
+        patientId = "'"+patientId+"'";
+        staffId = "'"+staffId+"'";
+        
+        //This string will hold the lines of SQl that go after "SET" in the Lab update statement
+        String Column_newValue = "med_id = "+medicationId+", patient_id = "+patientId+", staff_id = "+staffId+", Date_Prescribed = "+datePrescribed+", Dosage = "+dosage+", Refill_Date = "+refillDate;
+        
+        //This string will hold the condition where the update will take place
+        String condition = "med_ID LIKE "+medicationId+" AND Patient_id LIKE "+patientId+" AND Staff_id LIKE "+staffId;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        connection1.UpdateStatement("prescription", Column_newValue, condition);
+        
+        RecordUpdateFrame updateFrame = new RecordUpdateFrame();
+        
+        updateFrame.setVisible(true);
+        
+        //setting all fields back to blank
+        TxtMedicationId.setText("");
+        TxtPatientId.setText("");
+        TxtStaffId.setText("");
+        TxtDatePerscribed.setText("");
+        TxtDosage.setText("");
+        TxtRefillDate.setText("");
+    }//GEN-LAST:event_UpdateRecordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -477,8 +647,9 @@ public class PerscriptionFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddRecord;
     private javax.swing.JLabel DatePerscribedAddrecordPersLabel;
-    private javax.swing.JButton DeleteRecordButton;
+    private javax.swing.JButton DeleteRecord;
     private javax.swing.JButton DepartmentButtonPP;
     private javax.swing.JLabel DosageAddrecordPersLabel;
     private javax.swing.JButton LabButtonPP;
@@ -490,22 +661,23 @@ public class PerscriptionFrame extends javax.swing.JFrame {
     private javax.swing.JButton PayrollButtonPP;
     private javax.swing.JButton PerscriptionButtonPP;
     private javax.swing.JLabel RefillDateAddrecordPersLabel;
+    private javax.swing.JButton RefreshTable;
     private javax.swing.JButton Return;
     private javax.swing.JButton StaffButtonPP;
     private javax.swing.JLabel StaffIdAddRecordPF;
     private javax.swing.JButton StayButtonPP;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JTextField TxtDatePerscribed;
+    private javax.swing.JTextField TxtDosage;
+    private javax.swing.JTextField TxtMedicationId;
+    private javax.swing.JTextField TxtPatientId;
+    private javax.swing.JTextField TxtRefillDate;
+    private javax.swing.JTextField TxtStaffId;
+    private javax.swing.JButton UpdateRecord;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

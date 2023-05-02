@@ -42,7 +42,7 @@
                       <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                       <Component id="RefreshTable" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane1" alignment="0" min="-2" pref="1410" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="1226" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -73,7 +73,7 @@
                               <Component id="RefreshTable" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                      <EmptySpace pref="6" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -558,6 +558,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Update Record"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateRecordActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

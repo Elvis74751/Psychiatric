@@ -18,11 +18,6 @@ public class LoginScreen extends javax.swing.JFrame {
      * Creates new form LoginScreen
      */
     
-    private String adminID = "Admin";
-    private String adminPassword = "abc123"; 
-    
-    private String truePassword = "abc123"; 
-    
     public LoginScreen() {
         initComponents();
     }
@@ -41,7 +36,7 @@ public class LoginScreen extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         staffID = new javax.swing.JTextField();
         staffPassword = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        LoginButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,10 +49,10 @@ public class LoginScreen extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Password");
 
-        jButton1.setText("Login Button");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        LoginButton.setText("Login Button");
+        LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                LoginButtonActionPerformed(evt);
             }
         });
 
@@ -79,7 +74,7 @@ public class LoginScreen extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(114, 114, 114)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                            .addComponent(LoginButton)
                             .addComponent(jLabel1))))
                 .addContainerGap(111, Short.MAX_VALUE))
         );
@@ -97,7 +92,7 @@ public class LoginScreen extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(staffPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addComponent(jButton1)
+                .addComponent(LoginButton)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -105,7 +100,7 @@ public class LoginScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         
         String id = staffID.getText();
         String password = staffPassword.getText();
@@ -113,11 +108,17 @@ public class LoginScreen extends javax.swing.JFrame {
         //Creates an object of the connection class that we will use to access sql statements
         PsychiatricConnection connection1 = new PsychiatricConnection();
         
+        //Getting a resultset that includes all rows from staff table that have the password that the user put in
+        //ResultSet resultset2 = connection1.SelectStatement("staff_password", "staff","staff_id LIKE '"+id+"'");
+        
         //Getting a resultset that includes all rows from staff table that have the id that the user put in
         ResultSet resultset = connection1.SelectStatement("staff_id", "staff","staff_id LIKE '"+id+"'");
         
         //Intializes and assigns a null value to realID which will hold the staff id from the database that matches the one the user inputs
         String realID = "";
+        
+        //Intializes and assigns a null value to realPassword which will hold the staff password from the database that matches the one the user inputs
+        String realPassword = "";
         
         //Try and catch block used in order to assign the staff id gained in resultset to the variable realID
         try {
@@ -125,12 +126,19 @@ public class LoginScreen extends javax.swing.JFrame {
             if(resultset.next()){
                 realID = resultset.getString(1);
             }
+            
+            resultset = connection1.SelectStatement("staff_password", "staff","staff_id LIKE '"+id+"'");
+            
+            if(resultset.next()){
+                realPassword = resultset.getString(1);
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         //This if statement checks if the password and staff id are valid, if any of them are not valid, then it will open a new window saying that it is not valid
-        if(!password.equals(truePassword) || !realID.equals(id)){
+        if(!password.equals(realPassword) || !realID.equals(id)){
             
             //creates an instance of the BadLogin Frame and makes a new window of it visible
             BadLogin bL = new BadLogin();
@@ -144,14 +152,9 @@ public class LoginScreen extends javax.swing.JFrame {
             pS.setVisible(true);
         }
         
-        //Connection is destroyed yay!
+        //Connection is ended
         connection1.EndConnection();
-        
-        
-        
-        //put in code here that 
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_LoginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,7 +192,7 @@ public class LoginScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton LoginButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

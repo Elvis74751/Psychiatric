@@ -59,7 +59,6 @@ public class StayFrame extends javax.swing.JFrame {
         UpdateRoomStayRecord = new javax.swing.JButton();
         DeleteRoomStayRecord = new javax.swing.JButton();
         RefreshTable = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         Return = new javax.swing.JButton();
 
@@ -332,8 +331,6 @@ public class StayFrame extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jButton2.setText("jButton2");
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel1.setText("Hospital System: Stay & Room ");
 
@@ -358,11 +355,6 @@ public class StayFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jButton2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,11 +365,6 @@ public class StayFrame extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 204, Short.MAX_VALUE)
-                    .addComponent(jButton2)
-                    .addGap(0, 203, Short.MAX_VALUE)))
         );
 
         pack();
@@ -624,7 +611,6 @@ public class StayFrame extends javax.swing.JFrame {
     private javax.swing.JButton StayButton;
     private javax.swing.JButton UpdateRoomStayRecord;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

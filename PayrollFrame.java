@@ -4,6 +4,14 @@
  */
 package psychiatric;
 
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author alondrahernandez
@@ -41,24 +49,23 @@ public class PayrollFrame extends javax.swing.JFrame {
         PayrollButtonPP = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        DeleteRecordButton = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jTextField10 = new javax.swing.JTextField();
-        StaffIdDeleteRecordPF = new javax.swing.JLabel();
+        DeleteRecord = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         PatientIDAddRecordPF = new javax.swing.JLabel();
         DepartmentIDAddRecordPF = new javax.swing.JLabel();
         PositionTitleAddRecordPF = new javax.swing.JLabel();
         YearlySalaryAddRecordPF = new javax.swing.JLabel();
         StaffIdAddRecordPF = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        txtStaffId = new javax.swing.JTextField();
+        txtBonus = new javax.swing.JTextField();
+        txtYearlySalary = new javax.swing.JTextField();
+        txtPositionId = new javax.swing.JTextField();
+        txtDepartmentId = new javax.swing.JTextField();
         BonusAddRecordPF = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        txtPositionTitle = new javax.swing.JTextField();
+        AddRecord = new javax.swing.JButton();
+        UpdateRecord = new javax.swing.JButton();
+        RefreshTable = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -203,42 +210,12 @@ public class PayrollFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        DeleteRecordButton.setText("Delete Record");
-        DeleteRecordButton.addActionListener(new java.awt.event.ActionListener() {
+        DeleteRecord.setText("Delete Record");
+        DeleteRecord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteRecordButtonActionPerformed(evt);
+                DeleteRecordActionPerformed(evt);
             }
         });
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
-            }
-        });
-
-        StaffIdDeleteRecordPF.setText("Staff ID");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(StaffIdDeleteRecordPF, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(StaffIdDeleteRecordPF, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField10))
-                .addContainerGap(167, Short.MAX_VALUE))
-        );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -252,9 +229,9 @@ public class PayrollFrame extends javax.swing.JFrame {
 
         StaffIdAddRecordPF.setText("Staff ID");
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        txtPositionId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                txtPositionIdActionPerformed(evt);
             }
         });
 
@@ -278,22 +255,22 @@ public class PayrollFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(PositionTitleAddRecordPF, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPositionTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(PatientIDAddRecordPF, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPositionId, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(BonusAddRecordPF, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtBonus, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtStaffId, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(DepartmentIDAddRecordPF, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(57, 57, 57)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtDepartmentId, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtYearlySalary, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -301,37 +278,51 @@ public class PayrollFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PatientIDAddRecordPF, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8))
+                    .addComponent(txtPositionId))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(DepartmentIDAddRecordPF, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDepartmentId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(StaffIdAddRecordPF, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtStaffId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(YearlySalaryAddRecordPF, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6))
+                    .addComponent(txtYearlySalary))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PositionTitleAddRecordPF, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPositionTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BonusAddRecordPF, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBonus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(111, 111, 111))
         );
 
-        jButton3.setText("Add Record ");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        AddRecord.setText("Add Record ");
+        AddRecord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                AddRecordActionPerformed(evt);
+            }
+        });
+
+        UpdateRecord.setText("Update Record");
+        UpdateRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateRecordActionPerformed(evt);
+            }
+        });
+
+        RefreshTable.setText("Refresh Table");
+        RefreshTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RefreshTableActionPerformed(evt);
             }
         });
 
@@ -351,22 +342,22 @@ public class PayrollFrame extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(AddRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(UpdateRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(155, 155, 155)
-                                                .addComponent(DeleteRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addGap(64, 64, 64)
+                                        .addComponent(RefreshTable))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(222, 222, 222)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(455, Short.MAX_VALUE))
+                                .addGap(149, 149, 149)
+                                .addComponent(DeleteRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,14 +378,15 @@ public class PayrollFrame extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(263, 263, 263)
-                                .addComponent(DeleteRecordButton))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
-                        .addGap(24, 24, 24))))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RefreshTable))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(AddRecord)
+                            .addComponent(UpdateRecord))
+                        .addGap(4, 4, 4)
+                        .addComponent(DeleteRecord)
+                        .addContainerGap())))
         );
 
         pack();
@@ -422,21 +414,68 @@ public class PayrollFrame extends javax.swing.JFrame {
         sF.setVisible(true);
     }//GEN-LAST:event_DepartmentButtonPPActionPerformed
 
-    private void DeleteRecordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteRecordButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DeleteRecordButtonActionPerformed
+    private void DeleteRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteRecordActionPerformed
+        String positionId = txtPositionId.getText();
+        
+        positionId = "'"+positionId+"'";
+        
+        String condition = "position_id LIKE "+positionId;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        connection1.DeleteStatement("payroll", condition);
+        
+        RecordDeleteFrame deleteFrame = new RecordDeleteFrame();
+        
+        deleteFrame.setVisible(true);
+        
+        //setting all fields back to blank
+        txtPositionId.setText("");
+        txtDepartmentId.setText("");
+        txtStaffId.setText("");
+        txtYearlySalary.setText("");
+        txtPositionTitle.setText("");
+        txtBonus.setText("");
+    }//GEN-LAST:event_DeleteRecordActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void txtPositionIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPositionIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_txtPositionIdActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void AddRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRecordActionPerformed
+        //For Patient
+        String positionId = txtPositionId.getText();
+        String departmentId = txtDepartmentId.getText();
+        String staffId = txtStaffId.getText();
+        String yearlySalary = txtYearlySalary.getText(); //do not need ' '
+        String positionTitle = txtPositionTitle.getText();
+        String bonus = txtBonus.getText(); //do not need ' '
+        
+        //putting the variables in the proper varchar sql format
+        positionId = "'"+positionId+"'";
+        departmentId = "'"+departmentId+"'";
+        staffId = "'"+staffId+"'";
+        positionTitle = "'"+positionTitle+"'";
+        
+        String values = positionId+","+departmentId+","+staffId+","+yearlySalary+","+positionTitle+","+bonus;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        //
+        connection1.InsertStatement("Payroll", values);
+        
+        RecordAddedFrame addFrame = new RecordAddedFrame();
+        
+        addFrame.setVisible(true);
+        
+        //setting all fields back to blank
+        txtPositionId.setText("");
+        txtDepartmentId.setText("");
+        txtStaffId.setText("");
+        txtYearlySalary.setText("");
+        txtPositionTitle.setText("");
+        txtBonus.setText("");
+    }//GEN-LAST:event_AddRecordActionPerformed
 
     private void PatientReportButtonPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientReportButtonPPActionPerformed
         this.setVisible(false);
@@ -487,6 +526,83 @@ public class PayrollFrame extends javax.swing.JFrame {
         pF.setVisible(true);
     }//GEN-LAST:event_PayrollButtonPPActionPerformed
 
+    private void RefreshTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshTableActionPerformed
+        int c = 0;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        ResultSet resultset = connection1.SelectStatement("*", "Payroll");
+        
+        try {
+            
+            ResultSetMetaData Rss = resultset.getMetaData();
+            
+            c = Rss.getColumnCount();
+            
+            DefaultTableModel Df = (DefaultTableModel)jTable1.getModel();
+            
+            Df.setRowCount(c);
+            
+            while(resultset.next()){
+                Vector v2 = new Vector();
+                
+                for(int a = 1; a <= c; a++){
+                    
+                    v2.add(resultset.getString("position_id"));
+                    v2.add(resultset.getString("department_id"));
+                    v2.add(resultset.getString("staff_id"));
+                    v2.add(resultset.getString("Yearly_Salary"));
+                    v2.add(resultset.getString("position_title"));
+                    v2.add(resultset.getString("bonus"));
+                }
+                
+                Df.addRow(v2);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PayrollFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        connection1.EndConnection();
+    }//GEN-LAST:event_RefreshTableActionPerformed
+
+    private void UpdateRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateRecordActionPerformed
+        //For Payroll
+        String positionId = txtPositionId.getText();
+        String departmentId = txtDepartmentId.getText();
+        String staffId = txtStaffId.getText();
+        String yearlySalary = txtYearlySalary.getText(); //do not need ' '
+        String positionTitle = txtPositionTitle.getText();
+        String bonus = txtBonus.getText(); //do not need ' '
+        
+        //putting the variables in the proper varchar sql format
+        positionId = "'"+positionId+"'";
+        departmentId = "'"+departmentId+"'";
+        staffId = "'"+staffId+"'";
+        positionTitle = "'"+positionTitle+"'";
+        
+        //This string will hold the lines of SQl that go after "SET" in the Lab update statement
+        String Column_newValue = "position_id = "+positionId+", department_id = "+departmentId+", staff_id = "+staffId+", Yearly_Salary = "+yearlySalary+", Position_title = "+positionTitle+", bonus = "+bonus;
+        
+        //This string will hold the condition where the update will take place
+        String condition = "position_ID LIKE "+positionId;
+        
+        PsychiatricConnection connection1 = new PsychiatricConnection();
+        
+        connection1.UpdateStatement("Payroll", Column_newValue, condition);
+        
+        RecordUpdateFrame updateFrame = new RecordUpdateFrame();
+        
+        updateFrame.setVisible(true);
+        
+        //setting all fields back to blank
+        txtPositionId.setText("");
+        txtDepartmentId.setText("");
+        txtStaffId.setText("");
+        txtYearlySalary.setText("");
+        txtPositionTitle.setText("");
+        txtBonus.setText("");
+    }//GEN-LAST:event_UpdateRecordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -523,8 +639,9 @@ public class PayrollFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddRecord;
     private javax.swing.JLabel BonusAddRecordPF;
-    private javax.swing.JButton DeleteRecordButton;
+    private javax.swing.JButton DeleteRecord;
     private javax.swing.JButton DepartmentButtonPP;
     private javax.swing.JLabel DepartmentIDAddRecordPF;
     private javax.swing.JButton LabButtonPP;
@@ -535,26 +652,24 @@ public class PayrollFrame extends javax.swing.JFrame {
     private javax.swing.JButton PayrollButtonPP;
     private javax.swing.JButton PerscriptionButtonPP;
     private javax.swing.JLabel PositionTitleAddRecordPF;
+    private javax.swing.JButton RefreshTable;
     private javax.swing.JButton Return;
     private javax.swing.JButton StaffButtonPP;
     private javax.swing.JLabel StaffIdAddRecordPF;
-    private javax.swing.JLabel StaffIdDeleteRecordPF;
     private javax.swing.JButton StayButtonPP;
+    private javax.swing.JButton UpdateRecord;
     private javax.swing.JLabel YearlySalaryAddRecordPF;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField txtBonus;
+    private javax.swing.JTextField txtDepartmentId;
+    private javax.swing.JTextField txtPositionId;
+    private javax.swing.JTextField txtPositionTitle;
+    private javax.swing.JTextField txtStaffId;
+    private javax.swing.JTextField txtYearlySalary;
     // End of variables declaration//GEN-END:variables
 }
